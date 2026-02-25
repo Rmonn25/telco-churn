@@ -1,65 +1,96 @@
-# telco-churn
+# Telco Customer Churn Analysis
 
+>  Projeto em andamento  
+> Este projeto ainda está em desenvolvimento e continuará evoluindo com novas análises e modelagem preditiva.
 
-customerID
-ID do cliente
+---
 
-gender = Gênero
-Seja o cliente homem ou mulher
+## Sobre o Projeto
 
-SeniorCitizen = Cidadão Idoso
-Se o cliente é idoso ou não (1, 0)
+Este projeto tem como objetivo analisar e prever o churn (cancelamento) de clientes de uma empresa de telecomunicações.
+Através de análise exploratória de dados (EDA), buscamos identificar padrões e variáveis que influenciam o cancelamento de clientes.
+O foco principal é aplicar conceitos de Ciência de Dados e Machine Learning em um problema real de negócio.
 
-Partner = Parceiro
-Se o cliente tem parceiro ou não (Sim, Não)
+---
 
-Dependents = Dependentes
-Se o cliente tem dependentes ou não (Sim, Não)
+## Objetivos
 
-Tenure = Mandato
-Número de meses que o cliente permaneceu na empresa
+- Realizar limpeza e tratamento de dados
+- Explorar padrões relacionados ao churn
+- Identificar variáveis com maior poder preditivo
+- Construir um modelo de classificação (em breve)
+- Gerar insights estratégicos para retenção de clientes
 
-PhoneService = Serviço Telefônico
-Se o cliente tem ou não um serviço telefônico (Sim, não)
+---
 
-MultipleLine = Multiplas linhas telefonicas 
-Se o cliente tem várias linhas ou não (Sim, não, sem serviço telefônico)
+```bash
+telco-churn/
+│
+├── data/         # Dataset (.csv)
+├── notebooks/    # Notebooks com análises (EDA, modelagem, etc.)
+├── output/       # Imagens e gráficos gerados
+└── README.md
+```
 
-InternetService = Provedor de internet
-Provedor de internet do cliente (DSL, Fibra óptica, Não)
+## Tratamento de Dados
 
-OnlineSecurity = Segurança Online
-Se o cliente tem ou não segurança online (Sim, Não, Sem serviço de internet)
+Durante a etapa de limpeza, foram realizadas as seguintes ações:
 
-OnlineBackup Backups Onlines
-Quer o cliente tenha backup online ou não (Sim, Não, Sem serviço de internet)
+- Conversão da variável `TotalCharges` para formato numérico
+- Identificação de valores ausentes
+- Substituição de valores ausentes por 0 nos casos em que `tenure = 0`
+- Verificação de consistência dos tipos de dados
 
-DeviceProtection = Proteção de Dispositivos
-Independentemente de o cliente ter ou não proteção para o dispositivo (Sim, não, sem serviço de internet)
+---
 
-TechSupprt = Suporte Técnico
-Independentemente de o cliente ter suporte técnico ou não (Sim, não, sem serviço de internet)
+## Principais Insights da EDA
 
-StreamingTV
-Quer o cliente tenha TV por streaming ou não (Sim, não, sem serviço de internet)
+### 1. Tenure (Tempo de permanência)
 
-StreamingMovies = Streaming de Filmes
-Quer o cliente tenha ou não streaming de filmes (Sim, não, sem serviço de internet)
+- Clientes que churnam possuem tempo de permanência significativamente menor.
+- Aproximadamente 50% dos cancelamentos ocorrem nos primeiros 10 meses.
+- A mediana de tenure para churn é muito inferior à de clientes ativos.
 
-Contract = Contrato
-O prazo do contrato do cliente (mês a mês, um ano, dois anos)
+**Conclusão:** Clientes novos representam o grupo de maior risco.
 
-PaperlessBilling = Cobrança sem papel
-Se o cliente tem cobrança sem papel ou não (Sim, não)
+---
 
-PaymentMethod = Método de Pagamento
-O método de pagamento do cliente (cheque eletrônico, cheque enviado pelo correio, transferência bancária (automática), cartão de crédito (automático))
+### 2. MonthlyCharges (Cobrança mensal)
 
-MonthlyCharges = Cobranças Mensais
-O valor cobrado mensalmente ao cliente
+- Clientes que cancelam apresentam mensalidade média superior.
+- A mediana de MonthlyCharges é maior no grupo churn.
+- Planos mais caros parecem estar associados a maior probabilidade de cancelamento.
 
-TotalCharges = Cargas Totais
-O valor total cobrado ao cliente
+**Conclusão:** Pode existir sensibilidade a preço.
 
-Churn = Batimento
-Se o cliente se desfez ou não (Sim ou Não)
+---
+
+### 3. TotalCharges
+
+- Forte relação com tenure (valor acumulado ao longo do tempo).
+- Clientes que churnam tendem a ter menor valor acumulado, pois permanecem menos tempo.
+
+---
+
+## Perfil Inicial de Cliente com Maior Risco
+
+Com base na análise exploratória:
+
+> Clientes com baixa permanência (tenure baixo) e mensalidades mais altas apresentam maior probabilidade de churn.
+
+---
+
+## Tecnologias Utilizadas
+
+- Python
+- Pandas
+- NumPy
+- Matplotlib
+- Seaborn
+- Scikit-learn (em breve)
+
+---
+
+## Status do Projeto
+
+Em desenvolvimento — novas atualizações serão adicionadas conforme o avanço da modelagem.
